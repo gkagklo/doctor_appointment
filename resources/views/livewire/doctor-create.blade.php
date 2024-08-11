@@ -9,7 +9,7 @@
                         <div>
                             <x-input-label for="name" :value="__('Name')" />
                             <x-text-input wire:model="name" id="name" class="block mt-1 w-full" type="text"
-                                name="name" required autofocus autocomplete="name" />
+                                name="name" autofocus autocomplete="name" />
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
 
@@ -17,7 +17,7 @@
                         <div class="mt-4">
                             <x-input-label for="email" :value="__('Email')" />
                             <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email"
-                                name="email" required autocomplete="username" />
+                                name="email" autocomplete="username" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
 
@@ -25,7 +25,7 @@
                         <div>
                             <x-input-label for="bio" :value="__('Bio/About')" />
                             <x-text-input wire:model="bio" id="bio" class="block mt-1 w-full" type="text"
-                                name="bio" required autofocus autocomplete="bio" />
+                                name="bio" autofocus autocomplete="bio" />
                             <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                         </div>
 
@@ -33,19 +33,28 @@
                         <div>
                             <x-input-label for="hospital_name" :value="__('Hospital Name')" />
                             <x-text-input wire:model="hospital_name" id="hospital_name" class="block mt-1 w-full" type="text"
-                                name="hospital_name" required autofocus autocomplete="hospital_name" />
+                                name="hospital_name" autofocus autocomplete="hospital_name" />
                             <x-input-error :messages="$errors->get('hospital_name')" class="mt-2" />
                         </div>
 
                         <!-- Speciality -->
                         <div>
                             <x-input-label for="speciality" :value="__('Specialities')" />
-                            <select class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                            <select wire:model="speciality_id" class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                                 <option selected="">Choose Speciality</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
+                                @foreach($specialities as $speciality)
+                                    <option value="{{$speciality->id}}">{{$speciality->speciality_name}}</option>
+                                @endforeach
                             </select>
+                            <x-input-error :messages="$errors->get('speciality_id')" class="mt-2" />
+                        </div>
+
+                        <!-- Experience -->
+                        <div>
+                            <x-input-label for="experience" :value="__('Experience')" />
+                            <x-text-input wire:model="experience" id="experience" class="block mt-1 w-full" type="text"
+                                name="experience" autofocus autocomplete="experience" />
+                            <x-input-error :messages="$errors->get('experience')" class="mt-2" />
                         </div>
 
                         <!-- Password -->
@@ -53,7 +62,7 @@
                             <x-input-label for="password" :value="__('Password')" />
 
                             <x-text-input wire:model="password" id="password" class="block mt-1 w-full" type="password"
-                                name="password" required autocomplete="new-password" />
+                                name="password" autocomplete="new-password" />
 
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                         </div>
@@ -63,7 +72,7 @@
                             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
                             <x-text-input wire:model="password_confirmation" id="password_confirmation"
-                                class="block mt-1 w-full" type="password" name="password_confirmation" required
+                                class="block mt-1 w-full" type="password" name="password_confirmation"
                                 autocomplete="new-password" />
 
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
@@ -73,7 +82,7 @@
                         <div>
                             <x-input-label for="twitter" :value="__('Twitter')" />
                             <x-text-input wire:model="twitter" id="twitter" class="block mt-1 w-full" type="text"
-                                name="twitter" required autofocus autocomplete="twitter" />
+                                name="twitter" autofocus autocomplete="twitter" />
                             <x-input-error :messages="$errors->get('twitter')" class="mt-2" />
                         </div>
 
@@ -81,7 +90,7 @@
                         <div>
                             <x-input-label for="instagram" :value="__('Instagram')" />
                             <x-text-input wire:model="instagram" id="instagram" class="block mt-1 w-full" type="text"
-                                name="instagram" required autofocus autocomplete="instagram" />
+                                name="instagram" autofocus autocomplete="instagram" />
                             <x-input-error :messages="$errors->get('instagram')" class="mt-2" />
                         </div>
 
