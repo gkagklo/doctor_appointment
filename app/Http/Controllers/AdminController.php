@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Specialities;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -21,8 +22,19 @@ class AdminController extends Controller
         return view('admin.doctor-form');
     }
 
+    public function loadSpecialityForm()
+    {
+        return view('admin.speciality-form');
+    }
+
     public function loadAllSpecialities()
     {
         return view('admin.specialities');
     }
+
+    public function loadEditSpecialityForm($speciality_id)
+    {
+        return view('admin.edit-speciality-form', compact('speciality_id'));
+    }
+
 }
