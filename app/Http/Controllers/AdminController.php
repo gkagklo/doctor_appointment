@@ -37,4 +37,9 @@ class AdminController extends Controller
         return view('admin.edit-speciality-form', compact('speciality_id'));
     }
 
+    public function loadEditDoctorForm($doctor_id)
+    {
+        return view('admin.edit-doctor-form', compact('doctor_id'));
+    }
+
 }

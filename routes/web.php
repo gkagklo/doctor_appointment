@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,7 @@ Route::get('/doctor/dashboard', [DoctorController::class, 'loadDoctorDashboard']
 ->name('doctor-dashboard')
 ->middleware('doctor');
 
+Route::get('/filter-by-speciality/{speciality}', [PatientController::class, 'loadDoctorBySpeciality']);
 
 Route::group(['middleware' => 'admin'], function(){
     Route::get('/admin/dashboard', [AdminController::class, 'loadAdminDashboard'])
@@ -40,7 +42,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('/admin/create/doctor', [AdminController::class, 'loadDoctorForm']);
     Route::get('/admin/create/speciality', [AdminController::class, 'loadSpecialityForm']);
     Route::get('/admin/edit/speciality/{speciality}', [AdminController::class, 'loadEditSpecialityForm']);
-
+    Route::get('/admin/edit/doctor/{doctor}', [AdminController::class, 'loadEditDoctorForm']);
     Route::get('/admin/specialities', [AdminController::class, 'loadAllSpecialities'])
     ->name('admin-specialities');
 });

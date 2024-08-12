@@ -40,10 +40,16 @@
             <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
               <thead class="bg-gray-50 divide-y divide-gray-200 dark:bg-neutral-800 dark:divide-neutral-700">
                 <tr>
+
+                  <th scope="col" class="px-6 py-3 text-start">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      S/N
+                    </span>
+                  </th>
               
                   <th scope="col" class="px-6 py-3 text-start">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                      Name
+                      Doctor Name
                     </span>
                   </th>
 
@@ -61,13 +67,25 @@
 
                   <th scope="col" class="px-6 py-3 text-start">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      Speciality
+                    </span>
+                  </th>
+
+                  <th scope="col" class="px-6 py-3 text-start">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
                       Hospital Name
                     </span>
                   </th>
 
                   <th scope="col" class="px-6 py-3 text-start">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                      Speciality
+                      Experience
+                    </span>
+                  </th>
+
+                  <th scope="col" class="px-6 py-3 text-start">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      Actions
                     </span>
                   </th>
   
@@ -79,6 +97,11 @@
                
               @foreach($doctors as $doctor)
                 <tr>
+                  <td class="h-px w-auto whitespace-nowrap">
+                    <div class="px-6 py-2">
+                      <span class="font-semibold text-sm text-gray-800 dark:text-neutral-200">{{ $loop->iteration }}</span>
+                    </div>
+                  </td>
                   <td class="h-px w-auto whitespace-nowrap">
                     <div class="px-6 py-2">
                       <span class="font-semibold text-sm text-gray-800 dark:text-neutral-200">{{$doctor->user->name}}</span>
@@ -96,13 +119,27 @@
                   </td>
                   <td class="h-px w-auto whitespace-nowrap">
                     <div class="px-6 py-2">
+                      <span class="font-semibold text-sm text-gray-800 dark:text-neutral-200">{{$doctor->speciality->speciality_name}}</span>
+                    </div>
+                  </td>
+                  <td class="h-px w-auto whitespace-nowrap">
+                    <div class="px-6 py-2">
                       <span class="font-semibold text-sm text-gray-800 dark:text-neutral-200">{{$doctor->hospital_name}}</span>
                     </div>
                   </td>
                   <td class="h-px w-auto whitespace-nowrap">
                     <div class="px-6 py-2">
-                      <span class="font-semibold text-sm text-gray-800 dark:text-neutral-200">{{$doctor->speciality->speciality_name}}</span>
+                      <span class="font-semibold text-sm text-gray-800 dark:text-neutral-200">{{$doctor->experience}}</span>
                     </div>
+                  </td>
+                  <td class="h-px w-auto whitespace-nowrap">
+                    <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                    href="/admin/edit/doctor/{{$doctor->id}}">
+                      Edit
+                    </a>
+                    <button wire:confirm.prevent="Are you sure?" wire:click="delete({{$doctor->id}})" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-red-600 text-white hover:bg-red-700 focus:outline-none focus:bg-red-700 disabled:opacity-50 disabled:pointer-events-none">
+                      Delete
+                    </button>
                   </td>
                 </tr>
               @endforeach

@@ -7,16 +7,18 @@
       <!-- End Title -->
     <!-- Grid -->
     <div class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+
+      @foreach($specialist_cards as $speciality)
       <!-- Card -->
-      <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800" href="#">
+      <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800" href="/filter-by-speciality/{{$speciality->id}}">
         <div class="p-4 md:p-5">
           <div class="flex justify-between items-center gap-x-3">
             <div class="grow">
               <h3 class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-neutral-400 dark:text-neutral-200">
-                Management
+                {{$speciality->speciality_name}}
               </h3>
               <p class="text-sm text-gray-500 dark:text-neutral-500">
-                4 job positions
+                4 Doctors
               </p>
             </div>
             <div>
@@ -26,146 +28,9 @@
         </div>
       </a>
       <!-- End Card -->
+      @endforeach
   
-      <!-- Card -->
-      <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800" href="#">
-        <div class="p-4 md:p-5">
-          <div class="flex justify-between items-center gap-x-3">
-            <div class="grow">
-              <h3 class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-neutral-400 dark:text-neutral-200">
-                App Development
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-neutral-500">
-                26 job positions
-              </p>
-            </div>
-            <div>
-              <svg class="shrink-0 size-5 text-gray-800 dark:text-neutral-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </div>
-          </div>
-        </div>
-      </a>
-      <!-- End Card -->
-  
-      <!-- Card -->
-      <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800" href="#">
-        <div class="p-4 md:p-5">
-          <div class="flex justify-between items-center gap-x-3">
-            <div class="grow">
-              <h3 class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-neutral-400 dark:text-neutral-200">
-                Arts & Entertainment
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-neutral-500">
-                9 job positions
-              </p>
-            </div>
-            <div>
-              <svg class="shrink-0 size-5 text-gray-800 dark:text-neutral-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </div>
-          </div>
-        </div>
-      </a>
-      <!-- End Card -->
-  
-      <!-- Card -->
-      <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800" href="#">
-        <div class="p-4 md:p-5">
-          <div class="flex justify-between items-center gap-x-3">
-            <div class="grow">
-              <h3 class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-neutral-400 dark:text-neutral-200">
-                Accounting
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-neutral-500">
-                11 job positions
-              </p>
-            </div>
-            <div>
-              <svg class="shrink-0 size-5 text-gray-800 dark:text-neutral-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </div>
-          </div>
-        </div>
-      </a>
-      <!-- End Card -->
-  
-      <!-- Card -->
-      <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800" href="#">
-        <div class="p-4 md:p-5">
-          <div class="flex justify-between items-center gap-x-3">
-            <div class="grow">
-              <h3 class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-neutral-400 dark:text-neutral-200">
-                UI Designer
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-neutral-500">
-                37 job positions
-              </p>
-            </div>
-            <div>
-              <svg class="shrink-0 size-5 text-gray-800 dark:text-neutral-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </div>
-          </div>
-        </div>
-      </a>
-      <!-- End Card -->
-  
-      <!-- Card -->
-      <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800" href="#">
-        <div class="p-4 md:p-5">
-          <div class="flex justify-between items-center gap-x-3">
-            <div class="grow">
-              <h3 class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-neutral-400 dark:text-neutral-200">
-                Apps
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-neutral-500">
-                2 job positions
-              </p>
-            </div>
-            <div>
-              <svg class="shrink-0 size-5 text-gray-800 dark:text-neutral-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </div>
-          </div>
-        </div>
-      </a>
-      <!-- End Card -->
-  
-      <!-- Card -->
-      <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800" href="#">
-        <div class="p-4 md:p-5">
-          <div class="flex justify-between items-center gap-x-3">
-            <div class="grow">
-              <h3 class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-neutral-400 dark:text-neutral-200">
-                Content Writer
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-neutral-500">
-                10 job positions
-              </p>
-            </div>
-            <div>
-              <svg class="shrink-0 size-5 text-gray-800 dark:text-neutral-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </div>
-          </div>
-        </div>
-      </a>
-      <!-- End Card -->
-  
-      <!-- Card -->
-      <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800" href="#">
-        <div class="p-4 md:p-5">
-          <div class="flex justify-between items-center gap-x-3">
-            <div class="grow">
-              <h3 class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-neutral-400 dark:text-neutral-200">
-                Analytics
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-neutral-500">
-                14 job positions
-              </p>
-            </div>
-            <div>
-              <svg class="shrink-0 size-5 text-gray-800 dark:text-neutral-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </div>
-          </div>
-        </div>
-      </a>
-      <!-- End Card -->
+     
     </div>
     <!-- End Grid -->
   </div>
