@@ -47,4 +47,12 @@ Route::group(['middleware' => 'admin'], function(){
     ->name('admin-specialities');
 });
 
+Route::group(['middleware' => 'patient'], function(){
+    Route::get('/my-appointments', [PatientController::class, 'loadMyAppointments'])
+    ->name('my-appointments');  
+    Route::get('/articles', [PatientController::class, 'loadArticles'])
+    ->name('articles'); 
+    Route::get('/booking/page/{doctor_id}', [PatientController::class, 'loadBookingPage']); 
+});
+
 require __DIR__.'/auth.php';
