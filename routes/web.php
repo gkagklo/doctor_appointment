@@ -26,10 +26,6 @@ Route::view('dashboard', 'dashboard')
 ->middleware(['auth', 'verified', 'patient'])
 ->name('dashboard');
 
-Route::get('/doctor/dashboard', [DoctorController::class, 'loadDoctorDashboard'])
-->name('doctor-dashboard')
-->middleware('doctor');
-
 Route::get('/filter-by-speciality/{speciality}', [PatientController::class, 'loadDoctorBySpeciality']);
 
 Route::group(['middleware' => 'admin'], function(){
@@ -53,6 +49,19 @@ Route::group(['middleware' => 'patient'], function(){
     Route::get('/articles', [PatientController::class, 'loadArticles'])
     ->name('articles'); 
     Route::get('/booking/page/{doctor_id}', [PatientController::class, 'loadBookingPage']); 
+});
+
+Route::group(['middleware' => 'doctor'], function(){
+
+    Route::get('/doctor/dashboard', [DoctorController::class, 'loadDoctorDashboard'])
+    ->name('doctor-dashboard');
+    Route::get('/doctor/appointments', [DoctorController::class, 'loadAllAppointments'])
+    ->name('doctor-appointments');
+    Route::get('/doctor/schedules', [DoctorController::class, 'loadAllSchedules'])
+    ->name('my-schedules');
+    Route::get('/doctor/create/schedule', [DoctorController::class, 'loadAddScheduleForm']);
+    Route::get('/doctor/edit/schedule/{schedule}', [DoctorController::class, 'loadEditScheduleForm']);
+
 });
 
 require __DIR__.'/auth.php';
