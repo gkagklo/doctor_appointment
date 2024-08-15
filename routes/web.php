@@ -41,6 +41,9 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('/admin/edit/doctor/{doctor}', [AdminController::class, 'loadEditDoctorForm']);
     Route::get('/admin/specialities', [AdminController::class, 'loadAllSpecialities'])
     ->name('admin-specialities');
+
+    Route::get('/admin/appointments', [AdminController::class, 'loadAllAppointments'])
+    ->name('admin-appointments');
 });
 
 Route::group(['middleware' => 'patient'], function(){
