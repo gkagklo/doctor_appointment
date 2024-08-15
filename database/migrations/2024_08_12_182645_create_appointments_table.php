@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('patient_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('appointment_date');
             $table->time('appointment_time');
+            $table->integer('status')->default(0); // 0 - unconfirmed  1 - confirmed 
+            $table->integer('is_complete')->default(0); // 0 - uncomplete  1 - complete 
             $table->timestamps();
         });
     }
