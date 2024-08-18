@@ -12,4 +12,9 @@ class Specialities extends Model
     protected $fillable = [
         'speciality_name'
     ];
+
+    public function doctors()
+    {
+        return $this->hasMany(Doctor::class, 'speciality_id')->where('is_featured', 1); 
+    }
 }

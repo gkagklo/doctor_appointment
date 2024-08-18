@@ -18,7 +18,7 @@
                 {{$speciality->speciality_name}}
               </h3>
               <p class="text-sm text-gray-500 dark:text-neutral-500">
-                4 Doctors
+                {{$speciality->doctors->count()}}
               </p>
             </div>
             <div>
