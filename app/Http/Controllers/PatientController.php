@@ -30,8 +30,17 @@ class PatientController extends Controller
 
     public function loadBookingPage($id)
     {
-        $doctor = Doctor::with('speciality', 'user')->where('id', $id)->first();
-        return view('patient.booking-page', compact('doctor'));
+        if(auth()->user()){
+            $doctor = Doctor::with('speciality', 'user')->where('id', $id)->first();
+            return view('patient.booking-page', compact('doctor'));
+        }else{
+            return redirect('/login');
+        }   
+    }
+
+    public function loadAllDoctors()
+    {
+        return view('patient.all-doctors');
     }
 
 }

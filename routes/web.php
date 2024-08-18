@@ -27,6 +27,8 @@ Route::view('dashboard', 'dashboard')
 ->name('dashboard');
 
 Route::get('/filter-by-speciality/{speciality}', [PatientController::class, 'loadDoctorBySpeciality']);
+Route::get('/all-doctors', [PatientController::class, 'loadAllDoctors'])->name('all-doctors');
+Route::get('/booking/page/{doctor_id}', [PatientController::class, 'loadBookingPage']); 
 
 Route::group(['middleware' => 'admin'], function(){
     Route::get('/admin/dashboard', [AdminController::class, 'loadAdminDashboard'])
@@ -51,7 +53,6 @@ Route::group(['middleware' => 'patient'], function(){
     ->name('my-appointments');  
     Route::get('/articles', [PatientController::class, 'loadArticles'])
     ->name('articles'); 
-    Route::get('/booking/page/{doctor_id}', [PatientController::class, 'loadBookingPage']); 
 });
 
 Route::group(['middleware' => 'doctor'], function(){

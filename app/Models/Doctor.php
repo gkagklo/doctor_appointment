@@ -16,7 +16,8 @@ class Doctor extends Model
         'twitter',
         'instagram',
         'speciality_id',
-        'user_id'
+        'user_id',
+        'is_featured'
     ];
 
     public function user()

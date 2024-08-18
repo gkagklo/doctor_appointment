@@ -103,8 +103,41 @@ class BookingComponent extends Component
         $newAppointment->appointment_date = $carbonDate;
         $newAppointment->appointment_time = $slot;
         $newAppointment->save();
+
+        $appointmentEmailData = [
+            'date' => $this->selectedDate,
+            'time' => Carbon::parse($slot)->format('H:i A'),
+            'location' => '123 Medical Street, Health City',
+            'patient_name' => auth()->user()->name,
+            'patient_email' => auth()->user()->email,
+            'doctor_name' => $this->doctor_details->user->name,
+            'doctor_email' => $this->doctor_details->user->email,
+            'doctor_specialization' => $this->doctor_details->speciality->speciality_name,
+        ];
+        $this->sendAppointmentNotification($appointmentEmailData);
+
         session()->flash('message', 'Appointment with Dr'. $this->doctor_details->user->name.' on '. $this->selectedDate.$slot.' created successfully.');
         return $this->redirect('/my-appointments', navigate: true);      
+    }
+
+    public function sendAppointmentNotification($appointmentData)
+    {
+        // Send to Admin
+        $appointmentData['recipient_name'] = 'Admin Admin';
+        $appointmentData['recipient_role'] = 'admin';
+        Mail::to('ryvonyv@mailinator.com')->send(new AppointmentCreated($appointmentData));
+
+        // Send to Doctor
+        $appointmentData['recipient_name'] = $appointmentData['doctor_name'];
+        $appointmentData['recipient_role'] = 'doctor';
+        Mail::to($appointmentData['doctor_email'])->send(new AppointmentCreated($appointmentData));
+
+        // Send to Patient
+        $appointmentData['recipient_name'] = $appointmentData['patient_name'];
+        $appointmentData['recipient_role'] = 'patient';
+        Mail::to($appointmentData['patient_email'])->send(new AppointmentCreated($appointmentData));
+
+        return 'Appointment notifications sent successfully!';
     }
 
     public function render()

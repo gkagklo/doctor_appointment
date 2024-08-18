@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('experience')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
+            $table->integer('is_featured')->default(0);
             $table->timestamps();
         });
     }
