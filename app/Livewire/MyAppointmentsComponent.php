@@ -17,7 +17,17 @@ class MyAppointmentsComponent extends Component
 
     public function mount()
     {
-        $this->all_appointments = Appointment::with('patient', 'doctor')->get();
+        $user_id = auth()->user()->id;
+        if(auth()->user()->role == 2){
+            $this->all_appointments = Appointment::with('patient', 'doctor')->get();  
+        }else{
+            $this->all_appointments = Appointment::with('patient', 'doctor')->whereHas('patient', function($query) use($user_id){
+                $query->where('id', $user_id);
+            })->orWhereHas('doctor', function($query) use($user_id){
+                $query->where('user_id', $user_id);
+            })->get();
+        }
+        
     }
 
     public function cancel($id)
