@@ -1,11 +1,16 @@
 @component('mail::message')
-# Appointment Confirmation
+# Appointment Update
 
 Dear {{ $appointmentData['recipient_name'] }},
 
-An appointment has been successfully cancelled with the following details:
+An appointment has been successfully updated with the following details:
 
-### Appointment Details:
+### Old Appointment Details:
+- **Date:** {{ $appointmentData['old_date'] }}
+- **Time:** {{ $appointmentData['old_time'] }}
+- **Location:** {{ $appointmentData['location'] }}
+
+### New Appointment Details:
 - **Date:** {{ $appointmentData['date'] }}
 - **Time:** {{ $appointmentData['time'] }}
 - **Location:** {{ $appointmentData['location'] }}
@@ -18,11 +23,11 @@ An appointment has been successfully cancelled with the following details:
 - **Name:** {{ $appointmentData['doctor_name'] }}
 - **Specialization:** {{ $appointmentData['doctor_specialization'] }}
 
-### Appointment Cancelled By:
-- **Name:** {{ $appointmentData['cancelled_by'] }}
-- @if ($appointmentData['cancelled_by'] == 1)
+### Appointment Updated By:
+- **Name:** {{ $appointmentData['updated_by'] }}
+@if ($appointmentData['updated_by'] == 1)
 - **Role:** Doctor
-@elseif($appointmentData['cancelled_by'] == 2)
+@elseif($appointmentData['updated_by'] == 2)
 - **Role:** Admin
 @else
 - **Role:** Patient
@@ -35,12 +40,12 @@ You are receiving this email because an appointment has been cancelled in your s
 
 @if($appointmentData['role'] == 1)
 ## Doctor Notification
-You have a cancelled appointment.
+Appointment has been updated with the above details
 @endif
 
 @if($appointmentData['role'] == 0)
 ## Patient Notification
-Your appointment has been successfully cancelled.
+Your appointment has been successfully reschedule.
 @endif
 
 Thanks,<br>

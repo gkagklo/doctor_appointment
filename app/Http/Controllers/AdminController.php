@@ -47,4 +47,9 @@ class AdminController extends Controller
         return view('admin.edit-doctor-form', compact('doctor_id'));
     }
 
+    public function loadReschedulingForm($appointment_id)
+    {
+        return view('admin.reschedule-form', compact('appointment_id'));
+    }
+
 }

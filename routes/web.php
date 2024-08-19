@@ -46,6 +46,7 @@ Route::group(['middleware' => 'admin'], function(){
 
     Route::get('/admin/appointments', [AdminController::class, 'loadAllAppointments'])
     ->name('admin-appointments');
+    Route::get('/admin/reschedule/{appointment_id}', [AdminController::class, 'loadReschedulingForm']);
 });
 
 Route::group(['middleware' => 'patient'], function(){
@@ -53,6 +54,7 @@ Route::group(['middleware' => 'patient'], function(){
     ->name('my-appointments');  
     Route::get('/articles', [PatientController::class, 'loadArticles'])
     ->name('articles'); 
+    Route::get('/patient/reschedule/{appointment_id}', [PatientController::class, 'loadReschedulingForm']);
 });
 
 Route::group(['middleware' => 'doctor'], function(){
@@ -65,7 +67,7 @@ Route::group(['middleware' => 'doctor'], function(){
     ->name('my-schedules');
     Route::get('/doctor/create/schedule', [DoctorController::class, 'loadAddScheduleForm']);
     Route::get('/doctor/edit/schedule/{schedule}', [DoctorController::class, 'loadEditScheduleForm']);
-
+    Route::get('/doctor/reschedule/{appointment_id}', [DoctorController::class, 'loadReschedulingForm']);
 });
 
 require __DIR__.'/auth.php';

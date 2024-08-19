@@ -43,4 +43,9 @@ class PatientController extends Controller
         return view('patient.all-doctors');
     }
 
+    public function loadReschedulingForm($appointment_id)
+    {
+        return view('patient.reschedule-form', compact('appointment_id'));
+    }
+
 }
