@@ -13,8 +13,10 @@
       @foreach($all_doctors as $doctor)
       <div class="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200 dark:bg-neutral-900 dark:border-neutral-700">
         <div class="flex items-center gap-x-4">
-          <img class="rounded-full size-20" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Avatar">
-          <div class="grow">
+          @if($doctor->user->profile_image != null)
+            <img class="rounded-full size-20" src="{{ Storage::url($doctor->user->profile_image)}}" alt="Avatar">
+          @endif
+            <div class="grow">
             <h3 class="font-medium text-gray-800 dark:text-neutral-200">
               {{$doctor->user->name}}
             </h3>

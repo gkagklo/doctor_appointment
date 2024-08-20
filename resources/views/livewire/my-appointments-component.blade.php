@@ -181,7 +181,9 @@
                         <td class="size-px whitespace-nowrap align-top">
                           <a class="block p-6" href="#">
                             <div class="flex items-center gap-x-4">
-                              <img class="shrink-0 size-[38px] rounded-lg" src="https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80" alt="Product Image">
+                              @if($appointment->patient->profile_image != null)
+                                <img class="shrink-0 size-[38px] rounded-lg" src="{{ Storage::url($appointment->patient->profile_image) }}" alt="Product Image">
+                              @endif
                               <div>
                                 <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">{{ $appointment->patient->name }}</span>
                               </div>
@@ -193,7 +195,9 @@
                         <td class="size-px whitespace-nowrap align-top">
                           <a class="block p-6" href="#">
                             <div class="flex items-center gap-x-3">
-                              <img class="inline-block size-[38px] rounded-full" src="https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Product Image">
+                              @if($appointment->doctor->user->profile_image != null)
+                                <img class="inline-block size-[38px] rounded-full" src="{{ Storage::url($appointment->doctor->user->profile_image) }}" alt="Product Image">
+                              @endif
                               <div class="grow">
                                 <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">{{ $appointment->doctor->user->name }}</span>
                                 <span class="block text-sm text-gray-500 dark:text-neutral-500">{{ $appointment->doctor->user->email }}</span>
