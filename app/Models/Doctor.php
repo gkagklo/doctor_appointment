@@ -30,4 +30,11 @@ class Doctor extends Model
         return $this->belongsTo(Specialities::class, 'speciality_id'); 
     }
 
+    public function scopeSearch($query, $value)
+    {
+        $query->whereHas('user', function ($q) use ($value){
+            $q->where('name', 'like', '%'.$value.'%')->orWhere('email', 'like', '%'.$value.'%');
+        });
+    }
+
 }

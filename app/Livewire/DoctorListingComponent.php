@@ -4,15 +4,37 @@ namespace App\Livewire;
 
 use App\Models\Doctor;
 use App\Models\User;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class DoctorListingComponent extends Component
 {
-    public $doctors;
-    
-    public function mount()
+    use WithPagination;
+
+    public $search = '';
+    public $perPage = 5;
+    public $sortDirection = 'ASC';
+    public $sortColumn = 'name';
+
+    public function doSort($column)
     {
-        $this->doctors = Doctor::with('speciality','user')->get();   
+        if($this->sortColumn === $column){
+            $this->sortDirection = ($this->sortDirection == 'ASC') ? 'DESC' : 'ASC';
+            return;
+        }
+        $this->sortColumn = $column;
+        $this->sortDirection = 'ASC';
+    }
+
+    public function updatedPerPage()
+    {
+        $this->resetPage();
+    }
+
+    public function updatedSearch()
+    {
+        $this->resetPage();
     }
 
     public function delete($doctor_id)
@@ -42,7 +64,14 @@ class DoctorListingComponent extends Component
     }
 
     public function render()
-    {
-        return view('livewire.doctor-listing-component');
+    { 
+        $doctors = Doctor::with('speciality','user')->join('users', 'users.id', '=', 'doctors.user_id')        
+        ->search($this->search)
+        ->orderBy($this->sortColumn, $this->sortDirection)
+        ->paginate($this->perPage);
+
+        return view('livewire.doctor-listing-component', [
+            'doctors' => $doctors
+        ]);
     }
 }
