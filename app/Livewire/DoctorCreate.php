@@ -18,6 +18,7 @@ class DoctorCreate extends Component
     public $hospital_name = '';
     public $speciality_id = '';
     public $password = '';
+    public $password_confirmation = '';
     public $twitter = '';
     public $instagram = '';
     public $experience = '';
@@ -36,7 +37,8 @@ class DoctorCreate extends Component
             'bio' => 'required',
             'hospital_name' => 'required',
             'speciality_id' => 'required',
-            'password' => 'required|min:4',
+            'password' => 'required|min:4|confirmed',
+            'password_confirmation' => 'required|min:4',
             'twitter' => 'string',
             'instagram' => 'string',
             'experience' => 'required'

@@ -65,7 +65,8 @@ class DoctorListingComponent extends Component
 
     public function render()
     { 
-        $doctors = Doctor::with('speciality','user')->join('users', 'users.id', '=', 'doctors.user_id')        
+        $doctors = Doctor::with('speciality','user')->join('users', 'users.id', '=', 'doctors.user_id')
+        ->select('doctors.*')        
         ->search($this->search)
         ->orderBy($this->sortColumn, $this->sortDirection)
         ->paginate($this->perPage);
